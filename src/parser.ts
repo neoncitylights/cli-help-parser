@@ -161,8 +161,8 @@ export function parseOptionToken(optionValue: string): Fig.Option {
  * Parses an argument syntax literal like `<value...>` into an abstract token
  *
  * Syntax:
- *  - Required arguments are denoted with []
- *  - Optional arguments are denoted with <>
+ *  - Required arguments are denoted with <>
+ *  - Optional arguments are denoted with []
  *  - Variadic arguments are denoted with an ellipsis (three dots) via ...
  * 
  * @throws BracketParseError

@@ -10,7 +10,7 @@
 		"sourceMap": true,
 		"strict": true,
 		"target": "es2022",
-		"types": ["@withfig/autocomplete-types", "node"]
+		"types": ["@withfig/autocomplete-types", "node", "jest"]
 	},
 	"include": [
 		"src/**/*.ts"
