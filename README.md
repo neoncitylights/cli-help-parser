@@ -6,12 +6,28 @@ This library provides a parser that, given a CLI help manual, generates some sca
 
 ## Setup
 
-Running the NPM script will generate an `options.json` file (intentionally git-ignored in `.gitignore`). This script will take roughly anywhere between 30 to 90 milliseconds.
+Running the NPM script will generate an `options.json` file (intentionally git-ignored in `.gitignore`).
 
 ```bash
 npm install
 npm run generate
 ```
+
+## Performance
+
+This script will usually take longer on the first run, and faster on subsequent runs.
+
+With some informal benchmarking, this script ran around 30 to 40 milliseconds on subsequent runs with the following environment:
+
+* TypeScript version: 4.6.2
+* Node.js: 17.7.2
+* Machine:
+  * Model: MacBook Pro 2015
+  * OS version: macOS Monterey 12.2.1
+  * CPU: Intel(R) Core(TM) i7-4770HQ CPU @ 2.20GHz
+  * Memory: 16 GB 1600 MHz DDR3
+
+The timing was tested via `compute.time()` and `console.timeEnd()`.
 
 ## Post-processing
 

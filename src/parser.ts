@@ -31,9 +31,9 @@ export function postProcessOption(intlCollator: Intl.Collator, option: Fig.Optio
 	const tokens: string[] = text.split(TOKEN_SPACE);
 
 	// state
-	let containsDeprecatedKeyword: boolean = false;
-	let containsFilenameKeyword: boolean = false;
-	let containsFolderKeyword: boolean = false;
+	let containsDeprecatedKeyword = false;
+	let containsFilenameKeyword = false;
+	let containsFolderKeyword = false;
 
 	tokens.forEach((token) => {
 		if(!containsDeprecatedKeyword) {
@@ -59,6 +59,10 @@ export function postProcessOption(intlCollator: Intl.Collator, option: Fig.Optio
 		if (template.length !== 0) {
 			(option.args as Fig.Arg).template = template;
 		}
+	}
+	// remove period to conform with ESLint rule `@withfig/fig-linter/conventional-descriptions`
+	if((option.description as string)[(option.description as string).length - 1] === '.') {
+		option.description = text.slice(0, text.length - 1);
 	}
 
 	return option;
