@@ -1,0 +1,53 @@
+<!DOCTYPE html><html class="default"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>@neoncitylights/cli-help-parser</title><meta name="description" content="Documentation for @neoncitylights/cli-help-parser"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script async src="assets/search.js" id="search-script"></script></head><body><script>document.body.classList.add(localStorage.getItem("tsd-theme") || "os")</script><header><div class="tsd-page-toolbar"><div class="container"><div class="table-wrap"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption">Search</label><input type="text" id="tsd-search-field"/></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">@neoncitylights/cli-help-parser</a></div><div class="table-cell" id="tsd-widgets"><div id="tsd-filter"><a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a><div class="tsd-filter-group"><div class="tsd-select" id="tsd-filter-visibility"><span class="tsd-select-label">All</span><ul class="tsd-select-list"><li data-value="public">Public</li><li data-value="protected">Public/Protected</li><li data-value="private" class="selected">All</li></ul></div> <input type="checkbox" id="tsd-filter-inherited" checked/><label class="tsd-widget" for="tsd-filter-inherited">Inherited</label><input type="checkbox" id="tsd-filter-externals" checked/><label class="tsd-widget" for="tsd-filter-externals">Externals</label></div></div><a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a></div></div></div></div><div class="tsd-page-title"><div class="container"><h1>@neoncitylights/cli-help-parser</h1></div></div></header><div class="container container-main"><div class="row"><div class="col-8 col-content"><div class="tsd-panel tsd-typography">
+<a href="#cli-help-parser-for-fig-specs" id="cli-help-parser-for-fig-specs" style="color: inherit; text-decoration: none;">
+  <h1>CLI help parser for FIG specs</h1>
+</a>
+<p>This library provides a parser that, given a CLI help manual, generates some scaffolding for machine-readable Fig specs.</p>
+<blockquote>
+<p>Currently, this library is slightly hardcoded to just recognize webpack&#39;s help manual, but I may update it in the future to make this parser more generic.</p>
+</blockquote>
+
+<a href="#setup" id="setup" style="color: inherit; text-decoration: none;">
+  <h2>Setup</h2>
+</a>
+<p>Running the NPM script will generate an <code>options.json</code> file (intentionally git-ignored in <code>.gitignore</code>).</p>
+<pre><code class="language-bash"><span class="hl-0">npm install</span><br/><span class="hl-0">npm run generate</span>
+</code></pre>
+
+<a href="#performance" id="performance" style="color: inherit; text-decoration: none;">
+  <h2>Performance</h2>
+</a>
+<p>This script will usually take longer on the first run, and faster on subsequent runs.</p>
+<p>With some informal benchmarking, this script ran around 30 to 40 milliseconds on subsequent runs with the following environment:</p>
+<ul>
+<li>TypeScript version: 4.6.2</li>
+<li>Node.js: 17.7.2</li>
+<li>Machine:<ul>
+<li>Model: MacBook Pro 2015</li>
+<li>OS version: macOS Monterey 12.2.1</li>
+<li>CPU: Intel(R) Core(TM) i7-4770HQ CPU @ 2.20GHz</li>
+<li>Memory: 16 GB 1600 MHz DDR3</li>
+</ul>
+</li>
+</ul>
+<p>The timing was tested via <code>console.time()</code> and <code>console.timeEnd()</code>. <a href="https://console.spec.whatwg.org/#timeend">^console-time</a></p>
+
+<a href="#post-processing" id="post-processing" style="color: inherit; text-decoration: none;">
+  <h2>Post-processing</h2>
+</a>
+<p>After parsing every option/subcommand, it post-processes the description using some basic heuristics to find out more information:</p>
+
+<a href="#deprecated" id="deprecated" style="color: inherit; text-decoration: none;">
+  <h3>Deprecated</h3>
+</a>
+<p>If the sentence contains the keyword <code>deprecated</code>, it will mark it as deprecated via <code>deprecated: true</code>.
+It will also look to see if there is any inline code by checking for inline code delimiters, and use that as the <code>insertValue</code>.</p>
+
+<a href="#argument-templates" id="argument-templates" style="color: inherit; text-decoration: none;">
+  <h3>Argument templates</h3>
+</a>
+<ul>
+<li>Folders: If the sentence contains the keywords <code>directory</code>, and the option accepts an argument, it will add <code>&quot;folders&quot;</code> to the <code>template</code> property.</li>
+<li>Filepaths: If the sentence contains the keywords <code>filename</code>, and the option accepts an argument, it will add <code>&quot;filepaths&quot;</code> to the <code>template</code> property.</li>
+</ul>
+</div></div><div class="col-4 col-menu menu-sticky-wrap menu-highlight"><nav class="tsd-navigation primary"><ul><li class="current"><a href="modules.html">Exports</a></li></ul></nav><nav class="tsd-navigation secondary menu-sticky"><ul><li class="tsd-kind-class"><a href="classes/BracketParseError.html" class="tsd-kind-icon">Bracket<wbr/>Parse<wbr/>Error</a></li><li class="tsd-kind-variable"><a href="modules.html#TOKEN_OPTION_BRACKET_OPTIONAL" class="tsd-kind-icon">TOKEN_<wbr/>OPTION_<wbr/>BRACKET_<wbr/>OPTIONAL</a></li><li class="tsd-kind-variable"><a href="modules.html#TOKEN_OPTION_BRACKET_REQUIRED" class="tsd-kind-icon">TOKEN_<wbr/>OPTION_<wbr/>BRACKET_<wbr/>REQUIRED</a></li><li class="tsd-kind-variable"><a href="modules.html#TOKEN_OPTION_HYPHEN" class="tsd-kind-icon">TOKEN_<wbr/>OPTION_<wbr/>HYPHEN</a></li><li class="tsd-kind-variable"><a href="modules.html#TOKEN_OPTION_SEPARATOR" class="tsd-kind-icon">TOKEN_<wbr/>OPTION_<wbr/>SEPARATOR</a></li><li class="tsd-kind-variable"><a href="modules.html#TOKEN_OPTION_VARIADIC" class="tsd-kind-icon">TOKEN_<wbr/>OPTION_<wbr/>VARIADIC</a></li><li class="tsd-kind-variable"><a href="modules.html#TOKEN_SPACE" class="tsd-kind-icon">TOKEN_<wbr/>SPACE</a></li><li class="tsd-kind-variable"><a href="modules.html#TOKEN_SUBCOMMAND_SEPARATOR" class="tsd-kind-icon">TOKEN_<wbr/>SUBCOMMAND_<wbr/>SEPARATOR</a></li><li class="tsd-kind-function"><a href="modules.html#doBracketsMatch" class="tsd-kind-icon">do<wbr/>Brackets<wbr/>Match</a></li><li class="tsd-kind-function"><a href="modules.html#getClosingBracket" class="tsd-kind-icon">get<wbr/>Closing<wbr/>Bracket</a></li><li class="tsd-kind-function"><a href="modules.html#isAsciiDigit" class="tsd-kind-icon">is<wbr/>Ascii<wbr/>Digit</a></li><li class="tsd-kind-function"><a href="modules.html#isAsciiLetter" class="tsd-kind-icon">is<wbr/>Ascii<wbr/>Letter</a></li><li class="tsd-kind-function"><a href="modules.html#parseAllOptions" class="tsd-kind-icon">parse<wbr/>All<wbr/>Options</a></li><li class="tsd-kind-function"><a href="modules.html#parseArgumentToken" class="tsd-kind-icon">parse<wbr/>Argument<wbr/>Token</a></li><li class="tsd-kind-function"><a href="modules.html#parseOptionLineToken" class="tsd-kind-icon">parse<wbr/>Option<wbr/>Line<wbr/>Token</a></li><li class="tsd-kind-function"><a href="modules.html#parseOptionToken" class="tsd-kind-icon">parse<wbr/>Option<wbr/>Token</a></li><li class="tsd-kind-function"><a href="modules.html#sortByLengthDescending" class="tsd-kind-icon">sort<wbr/>By<wbr/>Length<wbr/>Descending</a></li></ul></nav></div></div></div><footer class="with-border-bottom"><div class="container"><h2>Legend</h2><div class="tsd-legend-group"><ul class="tsd-legend"><li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li></ul></div><h2>Settings</h2><p>Theme <select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></p></div></footer><div class="container tsd-generator"><p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div><div class="overlay"></div><script src="assets/main.js"></script></body></html>
