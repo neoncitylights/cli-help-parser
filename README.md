@@ -27,7 +27,7 @@ With some informal benchmarking, this script ran around 30 to 40 milliseconds on
   * CPU: Intel(R) Core(TM) i7-4770HQ CPU @ 2.20GHz
   * Memory: 16 GB 1600 MHz DDR3
 
-The timing was tested via `compute.time()` and `console.timeEnd()`.
+The timing was tested via `console.time()` and `console.timeEnd()`. [^console-time][^console-timeend]
 
 ## Post-processing
 
@@ -42,3 +42,6 @@ It will also look to see if there is any inline code by checking for inline code
 
 * Folders: If the sentence contains the keywords `directory`, and the option accepts an argument, it will add `"folders"` to the `template` property.
 * Filepaths: If the sentence contains the keywords `filename`, and the option accepts an argument, it will add `"filepaths"` to the `template` property.
+
+[^console-time]: https://console.spec.whatwg.org/#time
+[^console-timeend]: https://console.spec.whatwg.org/#timeend
