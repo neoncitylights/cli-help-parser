@@ -5,6 +5,7 @@ module.exports = {
 	collectCoverage: true,
 	collectCoverageFrom: [
 		'<rootDir>/src/**/*.ts',
+		'!<rootDir>/src/generate.ts',
 		'!<rootDir>/src/consts.ts',
 		'!<rootDir>/src/index.ts',
 	],
