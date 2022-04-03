@@ -1,25 +1,28 @@
-# Node.js & TypeScript Template
-This repository template includes the following features:
- * [Node.js](https://nodejs.org/) and [TypeScript](https://www.typescriptlang.org/) [v4.4](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-4.html) support
- * Support for [GitHub Codespaces](https://github.com/features/codespaces)
- * Support for [JetBrains IDEs](https://www.jetbrains.com/)
- * *Continuous integration* with [GitHub Actions](https://github.com/features/actions) and [Codesandbox CI](https://codesandbox.io/ci)
- * *Auto-bundling and minification* of source code with [Webpack](https://webpack.js.org/)
- * *Auto-generated documentation* of TS code with [TypeDoc](https://typedoc.org/)
- * *Auto-formatted code* with [ESLint](https://eslint.org/)
- * *Unit tests* with [Jest](https://jestjs.io/) framework
- * *Dependency updates* with [Renovate](https://github.com/marketplace/renovate)
+# CLI help parser for FIG specs
 
-# {library-name}
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![GitHub deployments](https://img.shields.io/github/deployments/samantha-labs/ts-scale/github-pages?label=deploy)](https://github.com/samantha-labs/ts-scale/deployments/activity_log?environment=github-pages)
+This library provides a parser that, given a CLI help manual, generates some scaffolding for machine-readable Fig specs.
 
-Describe the library.
+> Currently, this library is slightly hardcoded to just recognize webpack's help manual, but I may update it in the future to make this parser more generic.
 
-## Install
-```
-npm install @samantha-labs/{library-name}
+## Setup
+
+Running the NPM script will generate an `options.json` file (intentionally git-ignored in `.gitignore`). This script will take roughly anywhere between 30 to 90 milliseconds.
+
+```bash
+npm install
+npm run generate
 ```
 
-## License
-This library is licensed under the [MIT License](./LICENSE).
+## Post-processing
+
+After parsing every option/subcommand, it post-processes the description using some basic heuristics to find out more information:
+
+### Deprecated
+
+If the sentence contains the keyword `deprecated`, it will mark it as deprecated via `deprecated: true`.
+It will also look to see if there is any inline code by checking for inline code delimiters, and use that as the `insertValue`.
+
+### Argument templates
+
+* Folders: If the sentence contains the keywords `directory`, and the option accepts an argument, it will add `"folders"` to the `template` property.
+* Filepaths: If the sentence contains the keywords `filename`, and the option accepts an argument, it will add `"filepaths"` to the `template` property.

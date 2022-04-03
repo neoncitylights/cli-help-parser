@@ -1,5 +1,5 @@
 {
-	"name": "@neoncitylights/library-name",
+	"name": "@neoncitylights/cli-help-parser",
 	"version": "0.0.0",
 	"description": "{description}",
 	"license": "MIT",
@@ -7,14 +7,11 @@
 		"name": "Samantha",
 		"url": "https://github.com/neoncitylights"
 	},
-	"keywords": [
-		"progression",
-		"sequences"
-	],
-	"bugs": "https://github.com/samantha-labs/{library}/issues",
+	"keywords": [],
+	"bugs": "https://github.com/neoncitylights/cli-help-parser/issues",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/samantha-labs/{library}.git"
+		"url": "git+https://github.com/neoncitylights/cli-help-parser.git"
 	},
 	"funding": {
 		"type": "individual",
@@ -32,6 +29,7 @@
 		"build": "webpack --color",
 		"build:typedoc": "npx typedoc",
 		"build:all": "npm run build && npm run build:typedoc",
+		"generate": "ts-node src/generate.ts",
 		"clean": "rm -rf ./dist/ ./docs/typedocs/",
 		"deploy": "gh-pages -d ./docs/typedocs",
 		"test": "jest --coverage",
@@ -44,12 +42,18 @@
 		"version": "npm run lint && git add -A src",
 		"postversion": "git push && git push --tags"
 	},
+	"dependencies": {
+		"@withfig/autocomplete-types": "^1.14.0",
+		"node": "^17.7.2"
+	},
 	"devDependencies": {
 		"@types/jest": "27.4.1",
+		"@types/node": "^17.0.23",
 		"@typescript-eslint/eslint-plugin": "5.16.0",
 		"@typescript-eslint/parser": "5.16.0",
 		"eslint": "8.11.0",
 		"eslint-plugin-jest": "26.1.2",
+		"eslint-plugin-json": "^3.1.0",
 		"gh-pages": "3.2.3",
 		"jest": "27.5.1",
 		"ts-jest": "27.1.3",

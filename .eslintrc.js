@@ -9,6 +9,7 @@ module.exports = {
 		'plugin:@typescript-eslint/recommended',
 		'plugin:jest/recommended',
 		'plugin:jest/style',
+		'plugin:json/recommended',
 	],
 	'parser': '@typescript-eslint/parser',
 	'parserOptions': {

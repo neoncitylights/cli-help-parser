@@ -9,7 +9,8 @@
 		"skipLibCheck": true,
 		"sourceMap": true,
 		"strict": true,
-		"target": "es2017"
+		"target": "es2022",
+		"types": ["@withfig/autocomplete-types", "node"]
 	},
 	"include": [
 		"src/**/*.ts"
