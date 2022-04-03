@@ -20,7 +20,7 @@ npm run generate
 ```
 
 ## Documentation
-[Auto-generated API documentation is available](https://github.com/neoncitylights/cli-help-parser).
+[Auto-generated API documentation is available](https://neoncitylights.github.io/cli-help-parser/).
 
 ## Performance
 
