@@ -26,7 +26,7 @@ npm run generate
 
 This script will usually take longer on the first run, and faster on subsequent runs.
 
-With some informal benchmarking, this script can take around 30 to 40 milliseconds on sebsequent runs from parsing all of 957 options of the `webpack` CLI tool, with only a terminal open. This roughly tracks to approximately 36.57 nanoseconds per line.
+With some informal benchmarking, this script can take around 30 milliseconds on sebsequent runs from parsing all of 957 options of the `webpack` CLI tool, with only the native macOS terminal open. This roughly tracks to approximately 36.57 μs (microseconds) per line.
 
 The script+benchmark was ran under the following environment:
 
