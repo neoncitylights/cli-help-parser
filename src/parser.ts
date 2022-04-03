@@ -60,9 +60,11 @@ export function postProcessOption(intlCollator: Intl.Collator, option: Fig.Optio
 			(option.args as Fig.Arg).template = template;
 		}
 	}
-	// remove period to conform with ESLint rule `@withfig/fig-linter/conventional-descriptions`
-	if((option.description as string)[(option.description as string).length - 1] === '.') {
-		option.description = text.slice(0, text.length - 1);
+
+	// remove period to conform with ESLint rule
+	// `@withfig/fig-linter/conventional-descriptions`
+	if(text.endsWith('.')) {
+		option.description = text.slice(0, -1);
 	}
 
 	return option;
@@ -173,9 +175,14 @@ export function parseArgumentToken(argumentValue: string): Fig.Arg {
 	const openBracket: string = argumentValue[0];
 	const closeBracket: string = argumentValue[argumentValue.length-1] as string;
 	switch(openBracket) {
-	case TOKEN_OPTION_BRACKET_OPTIONAL: isOptional = true; break;
-	case TOKEN_OPTION_BRACKET_REQUIRED: isOptional = false; break;
-	default: throw new BracketParseError(`Unrecognized bracket token: "${argumentValue[0]}"`);
+	case TOKEN_OPTION_BRACKET_OPTIONAL:
+		isOptional = true;
+		break;
+	case TOKEN_OPTION_BRACKET_REQUIRED:
+		isOptional = false;
+		break;
+	default:
+		throw new BracketParseError(`Unrecognized bracket token: "${argumentValue[0]}"`);
 	}
 
 	if(!doBracketsMatch(openBracket, closeBracket)) {
@@ -192,9 +199,16 @@ export function parseArgumentToken(argumentValue: string): Fig.Arg {
 		nameEndIndex = argumentValue.length - TOKEN_OPTION_VARIADIC.length - 1;
 	}
 
-	return {
+	const option: Fig.Arg = {
 		name: argumentValue.slice(1, nameEndIndex),
-		isOptional: isOptional,
 		isVariadic: isVariadic,
 	};
+
+	// isOptional prop is false by default, only add if true
+	// see: @withfig/fig-linter/no-default-value-props
+	if(isOptional) {
+		option.isOptional = true;
+	}
+
+	return option;
 }

@@ -4,7 +4,6 @@ test('argument parses correctly', () => {
 	expect(parseArgumentToken('<value...>')).toMatchObject(
 		{
 			name: 'value',
-			isOptional: false,
 			isVariadic: true,
 		}
 	);
@@ -17,7 +16,6 @@ test('option parses correctly', () => {
 			description: '',
 			args: {
 				name: 'value',
-				isOptional: false,
 				isVariadic: true,
 			}
 		}
@@ -32,7 +30,6 @@ test('option line parses correctly', () => {
 			description: 'Provide path to a webpack configuration file e.g. ./webpack.config.js.',
 			args: {
 				name: 'value',
-				isOptional: false,
 				isVariadic: true,
 			}
 		}
