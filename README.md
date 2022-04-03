@@ -1,4 +1,7 @@
 # CLI help parser for FIG specs
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![GitHub deployments](https://img.shields.io/github/deployments/neoncitylights/cli-help-parser/github-pages?label=deploy)](https://github.com/neoncitylights/cli-help-parser/deployments/activity_log?environment=github-pages)
+[![codecov](https://codecov.io/gh/neoncitylights/cli-help-parser/branch/main/graph/badge.svg?token=xtI8VUXBwP)](https://codecov.io/gh/neoncitylights/cli-help-parser)
 
 This library provides a parser that, given a CLI help manual, generates some scaffolding for machine-readable Fig specs.
 
@@ -15,6 +18,9 @@ gh repo clone neoncitylights/cli-help-parser
 npm install
 npm run generate
 ```
+
+## Documentation
+[Auto-generated API documentation is available](https://github.com/neoncitylights/cli-help-parser).
 
 ## Performance
 
